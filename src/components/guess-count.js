@@ -1,9 +1,14 @@
 import React from 'react';
+import {connect} from 'react-redux';
 
-export default function GuessCount(props) {
+export function GuessCount(props) {
     return (
         <p>
-            Guess #<span id="count">{props.count}</span>!
+            Guess #<span id="count">{props.guesses.length}</span>!
         </p>
     );
 }
+const mapStateToProps = state => ({
+    guesses: state.guesses
+});
+export default connect(mapStateToProps)(GuessCount);
